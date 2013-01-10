@@ -23,7 +23,9 @@ int run_command(int argc, const char *argv[]) {
     struct cmd_struct commands[] = {
         { "help", cmd_help },
         { "init", cmd_init },
+	{ "trollface", cmd_trollface },
     };
+
 
     const char *cmd = argv[0];
 
