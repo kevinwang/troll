@@ -9,10 +9,10 @@
 char *init_troll_dir(const char *base) {
     char *dir = getcwd(NULL, 0);
     if (base) {
-        dir = (char *) realloc(dir, strlen(dir) + strlen(base) + 0);
+        dir = (char *) realloc(dir, strlen(dir) + strlen(base) + 8);
     }
     else {
-        dir = (char *) realloc(dir, strlen(dir) + 0);
+        dir = (char *) realloc(dir, strlen(dir) + 8);
     }
     strcat(dir, "/");
     if (base) {
