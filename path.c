@@ -9,10 +9,10 @@
 char *init_troll_dir(const char *base) {
     char *dir = getcwd(NULL, 0);
     if (base) {
-        dir = (char *) realloc(dir, strlen(dir) + strlen(base) + 8);
+        dir = (char *) realloc(dir, strlen(dir) + strlen(base) + 9);
     }
     else {
-        dir = (char *) realloc(dir, strlen(dir) + 8);
+        dir = (char *) realloc(dir, strlen(dir) + 9);
     }
     strcat(dir, "/");
     if (base) {
@@ -21,6 +21,7 @@ char *init_troll_dir(const char *base) {
         mkdir(base, 0755);
     }
     strcat(dir, TROLL_DIR);
+    strcat(dir, "/");
     mkdir(dir, 0755);
     return dir;
 }
