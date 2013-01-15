@@ -34,3 +34,7 @@ char *init_troll_dir(const char *base) {
 
     return trolldir;
 }
+
+char *get_repo_troll_dir() {
+    return 0;
+}
