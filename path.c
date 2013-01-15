@@ -3,6 +3,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <glob.h>
 #include "path.h"
 
 /* Returns full path of generated .troll directory */
@@ -36,5 +37,12 @@ char *init_troll_dir(const char *base) {
 }
 
 char *get_repo_troll_dir() {
-    return 0;
+  char *currdir = get_current_dir_name();
+  glob_t data;
+  while(glob(".git",0,NULL,&data) == GLOB_NOMATCH &&
+	strcmp(get_current_dir_name(), "home")) {
+    chdir("/..");
+  }
+  chdir(currdir);
+  return 0;
 }
