@@ -23,5 +23,14 @@ char *init_troll_dir(const char *base) {
     strcat(dir, TROLL_DIR);
     strcat(dir, "/");
     mkdir(dir, 0755);
-    return dir;
+
+    char *trolldir = (char *) malloc(strlen(dir) + 1);
+    memcpy(trolldir, dir, strlen(dir) + 1);
+
+    dir = (char *) realloc(dir, strlen(dir) + 7);
+    strcat(dir, "objects");
+    mkdir(dir, 0755);
+    free(dir);
+
+    return trolldir;
 }
