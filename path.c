@@ -37,12 +37,14 @@ char *init_troll_dir(const char *base) {
 }
 
 char *get_repo_troll_dir() {
-  char *currdir = get_current_dir_name();
-  glob_t data;
-  while(glob(".git",0,NULL,&data) == GLOB_NOMATCH &&
-	strcmp(get_current_dir_name(), "home")) {
-    chdir("/..");
+  char *cwd = getcwd(NULL, 0);
+  printf("%s\n", cwd);
+  int ret;
+  ret = chdir("..");
+  if (ret == -1) {
+    printf("Root reached\n");
+    return NULL;
   }
-  chdir(currdir);
-  return 0;
+  return get_repo_troll_dir();
 }
+
