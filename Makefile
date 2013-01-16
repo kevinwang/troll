@@ -6,6 +6,8 @@ face.o:
 	$(CC) $(CFLAGS) -trigraphs -Wno-trigraphs -c -o face.o face.c
 path.o: path.h
 
+test: test.c path.o
+
 clean:
 	rm -f *.o troll *~
 
