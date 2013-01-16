@@ -42,8 +42,8 @@ char *get_repo_troll_dir() {
   int ret;
   ret = chdir(".troll");
   if (ret == 0 ) {
-    printf("Trolldir is in %\n",cwd);
-    return 0;
+    printf("Trolldir is in %s\n",cwd);
+    return cwd;
   }
   if (!strcmp(cwd, "/")) {
     printf("Root reached\n");
