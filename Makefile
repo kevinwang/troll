@@ -9,6 +9,6 @@ path.o: path.h
 test: test.c path.o
 
 clean:
-	rm -f *.o troll *~
+	rm -f *.o troll *~ test
 
 .PHONY: clean

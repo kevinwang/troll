@@ -38,16 +38,14 @@ char *init_troll_dir(const char *base) {
 
 char *get_repo_troll_dir() {
   char *cwd = getcwd(NULL, 0);
-  printf("%s\n", cwd);
   int ret;
   ret = chdir(".troll");
   if (ret == 0 ) {
-    printf("Trolldir is in %s\n",cwd);
     return cwd;
   }
   if (!strcmp(cwd, "/")) {
-    printf("Root reached\n");
-    return NULL;
+    return "Root reached. Trolldir not found.";
   }
+  ret = chdir("..");
   return get_repo_troll_dir();
 }
