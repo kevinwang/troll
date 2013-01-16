@@ -40,11 +40,14 @@ char *get_repo_troll_dir() {
   char *cwd = getcwd(NULL, 0);
   printf("%s\n", cwd);
   int ret;
-  ret = chdir("..");
-  if (ret == -1) {
+  ret = chdir(".troll");
+  if (ret == 0 ) {
+    printf("Trolldir is in %\n",cwd);
+    return 0;
+  }
+  if (!strcmp(cwd, "/")) {
     printf("Root reached\n");
     return NULL;
   }
   return get_repo_troll_dir();
 }
-
