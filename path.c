@@ -41,10 +41,12 @@ char *get_repo_troll_dir() {
   int ret;
   ret = chdir(".troll");
   if (ret == 0 ) {
+    cwd = (char *) realloc(strlen(cwd) + 9);
+    strcat(cwd, "/.troll/");
     return cwd;
   }
   if (!strcmp(cwd, "/")) {
-    return "Root reached. Trolldir not found.";
+    return NULL;
   }
   ret = chdir("..");
   return get_repo_troll_dir();
