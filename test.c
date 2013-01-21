@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include "path.h"
+#include "object.h"
 
 int main(int argc, const char *argv[])
 {
-    printf("%s\n", get_repo_troll_dir());
+    write_blob("file");
 
     return 0;
 }
