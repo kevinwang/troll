@@ -1,6 +1,6 @@
 CFLAGS = -Wall -O2 -g
 LDFLAGS = -lssl
-TROLL_CMDS = help.o init.o
+TROLL_CMDS = help.o init.o add.o
 
 troll: troll.c $(TROLL_CMDS) face.o path.o object.o
 face.o:

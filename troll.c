@@ -26,6 +26,7 @@ int run_command(int argc, const char *argv[]) {
         { "help", cmd_help },
         { "init", cmd_init },
 	{ "face", cmd_face },
+	{ "add", cmd_add },
     };
 
     const char *cmd = argv[0];
