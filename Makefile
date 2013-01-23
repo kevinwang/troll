@@ -8,7 +8,7 @@ face.o:
 path.o: path.h
 object.o: object.h
 
-test: test.c object.o
+test: test.c object.o path.o
 
 clean:
 	rm -f *.o troll *~ test

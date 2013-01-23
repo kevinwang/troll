@@ -8,6 +8,6 @@
 
 char *hash_object(char *data, int len);
 char *sha1tohex(unsigned char *hash);
-char *write_blob(char *filename);
+void write_blob(char *filename);
 
 #endif /* end of include guard: OBJECT_H */
