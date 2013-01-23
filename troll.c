@@ -7,6 +7,8 @@ const char *help_text =
     "usage: troll <command> [<args>]\n\n"
     "Troll commands:\n"
     "\tinit\tCreate a new troll repository\n"
+    "\thelp\tGet help on commands\n"
+    "\tface\tGet a surprise\n"
     "\n"
     "See 'troll help <command>' for more information on a specific command.";
 
@@ -25,7 +27,6 @@ int run_command(int argc, const char *argv[]) {
         { "init", cmd_init },
 	{ "face", cmd_face },
     };
-
 
     const char *cmd = argv[0];
 
