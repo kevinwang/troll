@@ -1,0 +1,4 @@
+TROLL - Version ConTROLL Software
+by Kevin Wang, Eric Lam
+
+This software is meant to be used as any other version control software, like Git.
