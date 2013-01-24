@@ -6,7 +6,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include "commands.h"
-#include "object.h"
+#include "blob.h"
 #include "path.h"
 
 int ftw_add(const char *fpath, const struct stat *sb, int typeflag) {
