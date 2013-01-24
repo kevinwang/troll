@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include "commands.h"
 #include "object.h"
+#include "path.h"
 
 int ftw_add(const char *fpath, const struct stat *sb, int typeflag) {
     if (typeflag == FTW_F) {
@@ -16,6 +17,7 @@ int ftw_add(const char *fpath, const struct stat *sb, int typeflag) {
 }
 
 int cmd_add(int argc, const char *argv[]) {
+    die_if_not_troll_repo();
     if (argc == 1) {
         printf("Nothing specified, nothing added.\n");
         return 0;

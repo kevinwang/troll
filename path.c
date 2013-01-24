@@ -59,3 +59,15 @@ char *get_repo_troll_dir() {
     free(cwd);
     return trolldir;
 }
+
+void die_if_not_troll_repo() {
+    char *trolldir = get_repo_troll_dir();
+    if (trolldir) {
+        free(trolldir);
+    }
+    else {
+        free(trolldir);
+        printf("Not a troll repository.\n");
+        exit(128);
+    }
+}
