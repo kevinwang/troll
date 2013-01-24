@@ -5,6 +5,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 #include "blob.h"
+#include "index.h"
 #include "object.h"
 #include "path.h"
 
@@ -31,4 +32,7 @@ void write_blob(char *filename) {
     /* Create object file */
     int objectfd = open(path, O_CREAT | O_TRUNC | O_WRONLY, 0644);
     write(objectfd, data, full_len);
+
+    /* Add new object to index */
+    add_to_index(hash, filename);
 }
