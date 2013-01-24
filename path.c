@@ -1,3 +1,4 @@
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -31,6 +32,13 @@ char *init_troll_dir(const char *base) {
     dir = (char *) realloc(dir, strlen(dir) + 7);
     strcat(dir, "objects");
     mkdir(dir, 0755);
+
+    char *indexpath = (char *) malloc(strlen(dir) + 6);
+    memcpy(indexpath, trolldir, strlen(trolldir) + 1);
+    strcat(indexpath, "index");
+    int fd = open(indexpath, O_CREAT, 0644);
+    close(fd);
+
     free(dir);
 
     return trolldir;
