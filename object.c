@@ -1,3 +1,4 @@
+#include <errno.h>
 #include <fcntl.h>
 #include <openssl/sha.h>
 #include <stdio.h>
@@ -53,4 +54,22 @@ void write_blob(char *filename) {
     /* Create object file */
     int objectfd = open(path, O_CREAT | O_TRUNC | O_WRONLY, 0644);
     write(objectfd, data, full_len);
+}
+
+int print_object(char *hash) {
+    char *obj_path = get_repo_troll_dir();
+    obj_path = (char *) realloc(obj_path, strlen(obj_path) + 49);
+    strcat(obj_path, "objects/");
+    strncat(obj_path, hash, 40);
+
+    FILE *f = fopen(obj_path, "r");
+    if (errno == ENOENT) {
+        printf("fatal: Object does not exist.\n");
+        exit(128);
+    }
+
+    char c;
+    while (fgetc(f) != '\0');
+    while ((c = fgetc(f)) != EOF) printf("%c", c);
+    return 0;
 }

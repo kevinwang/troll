@@ -9,5 +9,6 @@
 char *hash_object(char *data, int len);
 char *sha1tohex(unsigned char *hash);
 void write_blob(char *filename);
+int print_object(char *hash);
 
 #endif /* end of include guard: OBJECT_H */
