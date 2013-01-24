@@ -36,7 +36,7 @@ char *init_troll_dir(const char *base) {
     return trolldir;
 }
 
-char *get_repo_troll_dir() {
+char *recursive_get_repo_troll_dir() {
   char *cwd = getcwd(NULL, 0);
   int ret;
   ret = chdir(".troll");
@@ -49,5 +49,13 @@ char *get_repo_troll_dir() {
     return NULL;
   }
   ret = chdir("..");
-  return get_repo_troll_dir();
+  return recursive_get_repo_troll_dir();
+}
+
+char *get_repo_troll_dir() {
+    char *cwd = getcwd(NULL, 0);
+    char *trolldir = recursive_get_repo_troll_dir();
+    chdir(cwd);
+    free(cwd);
+    return trolldir;
 }

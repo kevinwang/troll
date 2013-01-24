@@ -9,12 +9,9 @@
 #include "object.h"
 
 int ftw_add(const char *fpath, const struct stat *sb, int typeflag) {
-    char *cwd = getcwd(NULL, 0);
     if (typeflag == FTW_F) {
         write_blob((char *) fpath);
     }
-    chdir(cwd);
-    free(cwd);
     return 0;
 }
 
@@ -23,10 +20,8 @@ int cmd_add(int argc, const char *argv[]) {
         printf("Nothing specified, nothing added.\n");
         return 0;
     }
-    char *cwd = getcwd(NULL, 0);
     int i;
     for (i = 1; i < argc; i++) {
-        printf("Adding: %s\tLength: %lu\tcwd: %s\n", argv[i], strlen(argv[i]), getcwd(NULL, 0));
         struct stat buf;
         if (stat(argv[i], &buf) != 0) {
             printf("Ain't gon' work: %s\n", strerror(errno));
@@ -38,8 +33,6 @@ int cmd_add(int argc, const char *argv[]) {
         else {
             write_blob((char *) argv[i]);
         }
-        chdir(cwd);
     }
-    free(cwd);
     return 0;
 }
