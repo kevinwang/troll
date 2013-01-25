@@ -18,6 +18,7 @@ void print_log(char *hash) {
 }
 
 int cmd_log(int argc, const char *argv[]) {
+    die_if_not_troll_repo();
     char *path = get_repo_troll_dir();
     path = (char *) realloc(path, strlen(path) + 5);
     strcat(path, "HEAD");
