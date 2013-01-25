@@ -53,6 +53,20 @@ void commit(const char *message) {
 
     write(tmpcommitfd, "tree ", 5);
     write(tmpcommitfd, treehash, 40);
+
+    char *path = get_repo_troll_dir();
+    path = (char *) realloc(path, strlen(path) + 7);
+    strcat(path, "master");
+    int masterfd = open(path, O_CREAT | O_RDWR, 0644);
+    struct stat buf;
+    fstat(masterfd, &buf);
+    if (buf.st_size > 0) {
+        write(tmpcommitfd, "\nparent ", 8);
+        char *parenthash = (char *) malloc(41 * sizeof(char));
+        read(masterfd, parenthash, 40);
+        write(tmpcommitfd, parenthash, 40);
+    }
+
     write(tmpcommitfd, "\nauthor ", 8);
     write(tmpcommitfd, getenv("USER"), strlen(getenv("USER")));
     write(tmpcommitfd, "\n\n", 2);
@@ -62,5 +76,9 @@ void commit(const char *message) {
     close(tmpcommitfd);
 
     char *hash = write_commit();
-    printf("[branch %.7s] %s\n", hash, message);
+
+    lseek(masterfd, 0, SEEK_SET);
+    write(masterfd, hash, 40);
+
+    printf("[master %.7s] %s\n", hash, message);
 }
