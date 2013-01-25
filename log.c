@@ -25,7 +25,10 @@ int cmd_log(int argc, const char *argv[]) {
     int fd = open(path, O_RDONLY);
 
     char *hash = (char *) malloc(41 * sizeof(char));
-    read(fd, hash, 40);
+    int test;
+    test = read(fd, hash, 40);
+    if(!test)
+      return -1;
     printf("%s\n", hash);
 
     if (strcmp(hash, "master") == 0) {

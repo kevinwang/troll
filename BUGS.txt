@@ -1,2 +1,1 @@
 troll status - does not work. It finds a few files that are unstaged, but something in the directories makes it seg-fault
-troll log - only works if there have been commits, or if not in a troll repo. Otherwise "breaks" by seemingly pausing.
