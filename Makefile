@@ -1,4 +1,4 @@
-CFLAGS = -Wall -O2 -g
+CFLAGS = -Wall -O2 -g -Wno-unused-result
 LDFLAGS = -lcrypto
 TROLL_CMDS = help.o init.o add.o ls-files.o
 
