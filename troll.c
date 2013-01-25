@@ -28,6 +28,7 @@ int run_command(int argc, const char *argv[]) {
 	{ "face", cmd_face },
 	{ "add", cmd_add },
 	{ "ls-files", cmd_ls_files },
+	{ "status", cmd_status },
     };
 
     const char *cmd = argv[0];
