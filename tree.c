@@ -9,7 +9,7 @@
 #include "object.h"
 #include "path.h"
 
-void write_tree() {
+char *write_tree() {
     char *indexpath = get_repo_troll_dir();
     indexpath = (char *) realloc(indexpath, strlen(indexpath) + 5);
     strcat(indexpath, "index");
@@ -36,4 +36,6 @@ void write_tree() {
     /* Create object file */
     int objectfd = open(path, O_CREAT | O_TRUNC | O_WRONLY, 0644);
     write(objectfd, data, full_len);
+
+    return hash;
 }

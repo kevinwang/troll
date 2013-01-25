@@ -2,6 +2,6 @@
 
 #define TREE_H
 
-void write_tree();
+char *write_tree();
 
 #endif /* end of include guard: TREE_H */
