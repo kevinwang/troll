@@ -77,8 +77,19 @@ void commit(const char *message) {
 
     char *hash = write_commit();
 
+    /* Update master ref */
     lseek(masterfd, 0, SEEK_SET);
     write(masterfd, hash, 40);
+
+    char *headpath = get_repo_troll_dir();
+    headpath = (char *) realloc(headpath, strlen(path) + 5);
+    strcat(headpath, "HEAD");
+    int headfd = open(headpath, O_CREAT | O_RDWR, 0644);
+    struct stat headbuf;
+    fstat(headfd, &headbuf);
+    if (headbuf.st_size == 0) {
+        write(headfd, "master", 6);
+    }
 
     printf("[master %.7s] %s\n", hash, message);
 }

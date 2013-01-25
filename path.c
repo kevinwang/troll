@@ -39,6 +39,12 @@ char *init_troll_dir(const char *base) {
     int fd = open(indexpath, O_CREAT, 0644);
     close(fd);
 
+    char *headpath = (char *) malloc(strlen(dir) + 5);
+    memcpy(headpath, trolldir, strlen(trolldir) + 1);
+    strcat(headpath, "HEAD");
+    int headfd = open(headpath, O_CREAT, 0644);
+    close(headfd);
+
     free(dir);
 
     return trolldir;
