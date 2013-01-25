@@ -2,3 +2,9 @@ TROLL - Version ConTROLL Software
 by Kevin Wang, Eric Lam
 
 This software is meant to be used as any other version control software, like Git.
+
+Our version control software will use a combination of file storage and hashing to keep track of files. Several "objects" will keep track of the files into different groups, or commits.
+
+Troll is very heavy on file manipulation, including a lot of reading a writing.
+
+No credit for any one piece can be given to any single person. Even the Git history may not be accurate, as the two of us may have worked on a single computer.

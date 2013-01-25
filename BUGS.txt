@@ -1,0 +1,1 @@
+troll status - does not work. It finds a few files that are unstaged, but something in the directories makes it seg-fault

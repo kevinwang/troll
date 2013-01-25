@@ -12,14 +12,31 @@ Troll should be used on the command line with many different arguments. For exam
 *Files Included in the Repo:*
 * README.md
 * DESIGN.txt
+* BUGS.txt
+* TODO.txt
 * Makefile
 * troll.c
 * commands.h
-* init.c
+* add.c
+* blob.c
+* blob.h
+* checkout.c
+* checkout.h
+* cmd-commit.c
+* commit.c
+* commit.h
 * face.c
 * help.c
-* path.h
-* path.c
+* index.c
+* index.h
+* init.c
+* log.c
+* ls-files.c
 * object.h
 * object.c
-
+* path.c
+* path.h
+* status.c
+* test.c
+* tree.c
+* tree.h

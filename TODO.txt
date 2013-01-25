@@ -1,0 +1,1 @@
+troll checkout - checkout does not update the index, let alone bring the working directory back to a former commit.
