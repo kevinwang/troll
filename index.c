@@ -30,6 +30,11 @@ void add_to_index(char *hash, char *path) {
     free(fullpath);
 }
 
+/*
+ * Returns 0 if exact file is found
+ * 1 if file is found with different hash
+ * -1 if file is not found in .troll
+ */
 int index_file_check(char *hash, char *path) {
     char *indexpath = get_repo_troll_dir();
     int repo_path_len = strlen(indexpath) - 7;
