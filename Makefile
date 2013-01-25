@@ -1,6 +1,6 @@
 CFLAGS = -Wall -O2 -g -Wno-unused-result
 LDFLAGS = -lcrypto
-TROLL_CMDS = help.o init.o add.o ls-files.o cmd-commit.o
+TROLL_CMDS = help.o init.o add.o ls-files.o cmd-commit.o log.o
 
 troll: troll.c $(TROLL_CMDS) face.o path.o object.o blob.o index.o tree.o commit.o
 	$(CC) -o troll $(CFLAGS) $^ $(LDFLAGS)
@@ -12,7 +12,7 @@ blob.o: blob.h
 tree.o: tree.h
 commit.o: commit.h
 
-test: test.c object.o path.o index.o tree.o
+test: test.c object.o path.o index.o tree.o commit.o
 	$(CC) -o test $(CFLAGS) $^ $(LDFLAGS)
 
 clean:

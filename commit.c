@@ -1,3 +1,4 @@
+#include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -92,4 +93,36 @@ void commit(const char *message) {
     }
 
     printf("[master %.7s] %s\n", hash, message);
+}
+
+char *get_parent(char *hash) {
+    char *obj_path = get_repo_troll_dir();
+    obj_path = (char *) realloc(obj_path, strlen(obj_path) + 49);
+    strcat(obj_path, "objects/");
+    strncat(obj_path, hash, 40);
+
+    int objectfd = open(obj_path, O_RDONLY);
+    if (errno == ENOENT) {
+        printf("fatal: Object does not exist.\n");
+        exit(128);
+    }
+
+    struct stat buf;
+    fstat(objectfd, &buf);
+
+    char *data = (char *) malloc((size_t) buf.st_size + 1);
+    read(objectfd, data, buf.st_size);
+    char *data_right = data + strlen(data) + 1;
+
+    char *parent_hash = strstr(data_right, "parent");
+    if (parent_hash) {
+        parent_hash += 7;
+        char *hashcpy = (char *) malloc(41 * sizeof(char));
+        strncpy(hashcpy, parent_hash, 40);
+        free(data);
+        return hashcpy;
+    }
+
+    free(data);
+    return NULL;
 }
