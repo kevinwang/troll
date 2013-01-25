@@ -3,6 +3,8 @@
 
 int main(int argc, const char *argv[])
 {
-    add_to_index("ce013625030ba8dba906f756967f9e9ca394464a", "hello");
+  printf("Returns 0: %d\n", index_file_check("cc628ccd10742baea8241c5924df992b5c019f71","blah"));
+  printf("Returns 1: %d\n", index_file_check("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","hello"));
+  printf("Returns -1: %d\n", index_file_check("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","blah"));
     return 0;
 }
