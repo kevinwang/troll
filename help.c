@@ -29,8 +29,9 @@ const char *h_log = "\n\ttroll-log\n\n"
                     "\tLists all commits made in the repo\n\n";
 const char *h_checkout = "\n\ttroll-checkout\n\n"
                          "\ttroll checkout <tree hash>\n\n"
-                         "\tThis command is not yet functioning. Checkout allows the user to visit another commit\n\n"
-                         "\tThe hash is the hash provided in things like the log or after a commit\n\n";
+                         "\tCheckout allows the user to visit another commit\n\n"
+                         "\tThe hash is the hash provided in things like the log or after a commit\n\n"
+                         "\tBe careful, as untracked files may be overwritten by checkout\n\n;
 const char *h_face = "\n\ttroll-face - ?\n";
 
 int cmd_help(int argc, const char *argv[]) {

@@ -1,1 +1,4 @@
-troll checkout - checkout does not update the index, let alone bring the working directory back to a former commit.
+troll status - need to fix troll status
+troll branch - need to implement branching
+troll push - need to implement pushing to single remote repo
+troll merge - need to be able to merge different commits
