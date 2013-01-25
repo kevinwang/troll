@@ -5,6 +5,7 @@
 #include "path.h"
 
 int cmd_ls_files(int argc, const char *argv[]) {
+    die_if_not_troll_repo();
     char *indexpath = get_repo_troll_dir();
     indexpath = (char *) realloc(indexpath, strlen(indexpath) + 5);
     strcat(indexpath, "index");
