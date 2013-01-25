@@ -9,7 +9,7 @@ path.o: path.h
 object.o: object.h
 blob.o: blob.h
 
-test: test.c object.o path.o index.o
+test: test.c path.o index.o
 
 clean:
 	rm -f *.o troll *~ test
