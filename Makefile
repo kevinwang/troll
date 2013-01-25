@@ -12,6 +12,7 @@ blob.o: blob.h
 tree.o: tree.h
 
 test: test.c object.o path.o index.o tree.o
+	$(CC) -o test $(CFLAGS) $^ $(LDFLAGS)
 
 clean:
 	rm -f *.o troll *~ test
