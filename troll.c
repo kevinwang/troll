@@ -8,6 +8,12 @@ const char *help_text =
     "Troll commands:\n"
     "\tinit\tCreate a new troll repository\n"
     "\thelp\tGet help on commands\n"
+    "\tadd\tAdd files to the working directory\n"
+    "\tls-files\tView what files have been tracked\n"
+    "\tstatus\tView status of repo... do not use\n"
+    "\tcommit\tSave the tree/index to a point to go back to\n"
+    "\tlog\tView commit history\n"
+    "\tcheckout\tGo back to a previous commit\n"
     "\tface\tGet a surprise\n"
     "\n"
     "See 'troll help <command>' for more information on a specific command.";
@@ -31,6 +37,7 @@ int run_command(int argc, const char *argv[]) {
 	{ "status", cmd_status },
 	{ "commit", cmd_commit },
 	{ "log", cmd_log },
+	{ "checkout",cmd_checkout },
     };
 
     const char *cmd = argv[0];
